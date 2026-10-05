@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Slideshow TikTok</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: transparent;
+    }
+
+    .slideshow {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        opacity: 0;
+        transition: opacity 2s ease-in-out;
+    }
+
+    .slide.active {
+        opacity: 1;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="slideshow">
+
+    <div class="slide"
+         style="background-image: url('imagenes/Henry.png');">
+    </div>
+
+    <div class="slide"
+         style="background-image: url('imagenes/Norma.png');">
+    </div>
+
+    <div class="slide"
+         style="background-image: url('imagenes/Fauna.png');">
+    </div>
+
+    <div class="slide"
+         style="background-image: url('imagenes/Kid_Cat.png');">
+    </div>
+
+    <div class="slide"
+         style="background-image: url('imagenes/Bree.png');">
+    </div>
+
+</div>
+
+<script>
+
+const slides = document.querySelectorAll('.slide');
+
+let currentSlide = 0;
+
+// Tiempo de cada imagen: 8 segundos
+const displayTime = 8000;
+
+// Mostrar la primera imagen
+slides[currentSlide].classList.add('active');
+
+// Cambiar imagen
+setInterval(() => {
+
+    slides[currentSlide].classList.remove('active');
+
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
+
+    slides[currentSlide].classList.add('active');
+
+}, displayTime);
+
+</script>
+
+</body>
+</html>
